@@ -1,9 +1,14 @@
 // ==UserScript==
 // @name         AKM Work Importer for MusicBrainz
 // @namespace    akm-work-importer
-// @version      0.4.1
+// @version      0.4.2
 // @description  AKM/AUME: AR-Berechtigte per IPI mit MusicBrainz matchen, Werkdaten prüfen und danach ein neues Werk auf /work/create öffnen
-// @author       (dein Name)
+// @author       cibkp89
+// @license      MIT
+// @homepageURL  https://github.com/cibkp89/musicbrainz-scripts
+// @supportURL   https://github.com/cibkp89/musicbrainz-scripts/issues
+// @updateURL    https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/akm-work-importer.user.js
+// @downloadURL  https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/akm-work-importer.user.js
 // @match        https://www.akm-aume.at/akm-webapp/*
 // @match        https://musicbrainz.org/work/create*
 // @match        https://*.musicbrainz.org/work/create*

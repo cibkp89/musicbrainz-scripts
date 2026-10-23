@@ -1,9 +1,14 @@
 // ==UserScript==
 // @name         GEMA Work Importer for MusicBrainz
 // @namespace    gema-work-importer
-// @version      0.4.2
+// @version      0.4.3
 // @description  GEMA Repertoiresuche: Artists und Originalverlage per IPI mit MusicBrainz matchen und GEMA-Werk als neues MusicBrainz-Werk anlegen
-// @author       (dein Name)
+// @author       cibkp89
+// @license      MIT
+// @homepageURL  https://github.com/cibkp89/musicbrainz-scripts
+// @supportURL   https://github.com/cibkp89/musicbrainz-scripts/issues
+// @updateURL    https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/gema-work-importer.user.js
+// @downloadURL  https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/gema-work-importer.user.js
 // @match        https://portal.gema.de/app/repertoiresuche/werksuche*
 // @match        https://musicbrainz.org/work/create*
 // @match        https://*.musicbrainz.org/work/create*
@@ -133,7 +138,7 @@
             // MusicBrainz' API-Etikette verlangt einen aussagekräftigen
             // User-Agent (App + Version + Kontakt), sonst landet man
             // schneller auf der Drossel-Liste. Bitte ggf. Kontakt anpassen.
-            'User-Agent': 'gema-work-importer/0.4.0 ( https://github.com/ )',
+              'User-Agent': 'gema-work-importer/0.4.3 ( https://github.com/cibkp89/musicbrainz-scripts )',
           },
           timeout: 10000,
           onload: (r) => {
