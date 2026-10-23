@@ -1,53 +1,56 @@
 # MusicBrainz Scripts
 
-Userscripts, die das Anlegen von Werken (Works) in [MusicBrainz](https://musicbrainz.org) aus den Datenbanken der Verwertungsgesellschaften **AKM** (Österreich) und **GEMA** (Deutschland) erleichtern.
+🇩🇪 [Deutsche Version](README.de.md)
 
-Die Scripte lesen Werkdaten und Beteiligte aus, suchen die passenden Artists (und bei GEMA optional Verlage) per **IPI** in MusicBrainz und öffnen anschließend ein vorausgefülltes `/work/create`-Formular inklusive Beziehungen. Gespeichert wird nichts automatisch – das Werk wird erst angelegt, wenn du es in MusicBrainz selbst abschickst.
+Userscripts that make it easier to add works to [MusicBrainz](https://musicbrainz.org) using data from the Austrian and German performing rights societies **AKM** and **GEMA**.
+
+The scripts read work data and contributors, look up matching artists (and, for GEMA, optionally publishers) in MusicBrainz by **IPI**, and then open a pre-filled `/work/create` form including relationships. Nothing is submitted automatically – the work is only created once you submit the form in MusicBrainz yourself.
 
 ## Installation
 
-1. Einen Userscript-Manager installieren, z. B. [Tampermonkey](https://www.tampermonkey.net/) oder [Violentmonkey](https://violentmonkey.github.io/).
-2. Auf den Installationslink des gewünschten Scripts klicken:
+1. Install a userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/).
+2. Click the install link for the script you want:
 
-| Script | Installieren |
+| Script | Install |
 |---|---|
 | AKM Work Importer | [akm-work-importer.user.js](https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/akm-work-importer.user.js) |
 | GEMA Work Importer | [gema-work-importer.user.js](https://raw.githubusercontent.com/cibkp89/musicbrainz-scripts/main/gema-work-importer.user.js) |
 
-Updates werden vom Userscript-Manager automatisch aus diesem Repository geladen.
+Your userscript manager will fetch updates from this repository automatically.
 
 ## AKM Work Importer
 
-**Läuft auf:** AKM/AUME-Werksuche (`akm-aume.at/akm-webapp`) und MusicBrainz `/work/create`
+**Runs on:** AKM/AUME work search (`akm-aume.at/akm-webapp`) and MusicBrainz `/work/create`
 
-- Fügt bei jeder Werkversion einen Button **„🎵 Werk anlegen“** ein.
-- Liest Titel, ISWC, AKM-Werknummer und die AR-Berechtigten (Komponist, Textdichter, Arrangeur) aus.
-- Sucht jede Person per IPI in MusicBrainz; bei mehreren oder keinen Treffern kann manuell per Name oder MBID gesucht werden.
-- Werktitel und Lyricsprache lassen sich vor dem Öffnen korrigieren (AKM liefert Titel meist in Großbuchstaben).
-- Öffnet MusicBrainz mit vorausgefülltem Titel, ISWC, Sprache, Werktyp, AKM-Werknummer als Attribut, Edit-Note und den Artist-Beziehungen.
+- Adds a **“🎵 Werk anlegen”** button to every work version.
+- Reads the title, ISWC, AKM work number and the AR rights holders (composer, lyricist, arranger).
+- Looks up each person in MusicBrainz by IPI; if there are several matches or none, you can search manually by name or MBID.
+- Title and lyrics language can be corrected before opening MusicBrainz (AKM usually lists titles in upper case).
+- Opens MusicBrainz with title, ISWC, language, work type, AKM work number as a work attribute, edit note and artist relationships pre-filled.
 
 ## GEMA Work Importer
 
-**Läuft auf:** GEMA-Repertoiresuche (`portal.gema.de/app/repertoiresuche/werksuche`) und MusicBrainz `/work/create`
+**Runs on:** GEMA repertoire search (`portal.gema.de/app/repertoiresuche/werksuche`) and MusicBrainz `/work/create`
 
-- Fügt in der Trefferliste einen Button **„🎵 MusicBrainz“** ein.
-- Liest Titel, ISWC, GEMA-Werkfassungsnummer, Sprache und Beteiligte aus.
-- Personen mit mehreren Rollen (z. B. Komponist und Textdichter) werden getrennt behandelt, aber nur einmal gesucht.
-- Importoptionen für Personen:
-  - **GEMA-Rollen übernehmen** (Komponist/Textdichter)
-  - **Alle als Verfasser** (writer, dedupliziert)
-  - **Manuell pro Person**
-- Originalverlage können optional als MusicBrainz-Label mit „publishing“-Beziehung übernommen werden.
-- Die Sprache wird aus den GEMA-Daten vorausgewählt.
-- MusicBrainz-Anfragen werden auf ca. 1 pro Sekunde gedrosselt; IPI-Ergebnisse der letzten 10 Suchen werden zwischengespeichert (praktisch bei Alben mit immer denselben Beteiligten).
+- Adds a **“🎵 MusicBrainz”** button to each search result.
+- Reads the title, ISWC, GEMA work ID, language and contributors.
+- People with multiple roles (e.g. composer and lyricist) are handled separately but only looked up once.
+- Import options for people:
+  - **Keep GEMA roles** (composer/lyricist)
+  - **Everyone as writer** (deduplicated)
+  - **Choose manually per person**
+- Original publishers can optionally be added as MusicBrainz labels with a “publishing” relationship.
+- The lyrics language is pre-selected from the GEMA data.
+- MusicBrainz requests are throttled to about one per second; IPI results of the last 10 lookups are cached (handy for albums with the same contributors throughout).
 
-## Hinweise
+## Notes
 
-- Die Scripte nutzen nur öffentliche Daten der AKM- bzw. GEMA-Suche und die öffentliche MusicBrainz-API. Ein Login ist nicht nötig.
-- Popups für `musicbrainz.org` müssen erlaubt sein, da das Formular in einem neuen Tab geöffnet wird.
-- Vor dem Abschicken bitte immer alle Daten in MusicBrainz prüfen – IPI-Treffer sind meist, aber nicht immer eindeutig.
-- Ändern AKM oder GEMA ihre Webseiten, können die Scripte ohne Vorwarnung aufhören zu funktionieren.
+- The scripts only use publicly available data from the AKM and GEMA search pages and the public MusicBrainz API. No login is required.
+- Pop-ups must be allowed for `musicbrainz.org`, as the form opens in a new tab.
+- Always review all data in MusicBrainz before submitting – IPI matches are usually, but not always, unambiguous.
+- The user interface of the scripts is in German.
+- If AKM or GEMA change their websites, the scripts may stop working without notice.
 
-## Lizenz
+## License
 
 [MIT](LICENSE)
